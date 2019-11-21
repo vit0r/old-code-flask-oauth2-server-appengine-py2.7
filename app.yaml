@@ -1,0 +1,26 @@
+application: machinemon-oauth2-server
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: yes
+
+skip_files:
+- ^(.*/)?#.*#
+- ^(.*/)?.*~
+- ^(.*/)?.*\.py[co]
+- ^(.*/)?.*/RCS/.*
+- ^(.*/)?\..*
+- ^(.*/)?tests$
+- ^(.*/)?test$
+- ^test/(.*/)?
+- ^COPYING.LESSER
+- ^README\..*
+- \.gitignore
+- ^\.git/.*
+- ^\.idea/.*
+- ^\machinemon-oauth2-server-20df041d78c2.json
+- ^\lib/setuptools/*
+
+handlers:
+- url: .*
+  script: server.app

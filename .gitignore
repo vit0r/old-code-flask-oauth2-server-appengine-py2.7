@@ -1,0 +1,6 @@
+*.py[cod]
+*.idea/
+lib/
+.DS_Store
+machinemon-oauth2-server-20df041d78c2.json
+.vscode
