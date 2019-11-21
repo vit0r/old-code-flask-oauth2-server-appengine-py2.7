@@ -7,8 +7,10 @@ CLIENT_ID = environ.get('CLIENT_ID_OAUTH')
 CLIENT_SECRET = environ.get('CLIENT_SECRET_OAUTH')
 OAUTH_SERVER_BASE_URL = environ.get('OAUTH_SERVER_BASE_URL')
 
+environ['DEBUG'] = 'true'
+environ['OAUTHLIB_INSECURE_TRANSPORT'] = 'false'
+
 app = Flask(__name__)
-app.debug = True
 app.secret_key = 'secret'
 oauth = OAuth(app)
 
@@ -54,7 +56,4 @@ def get_oauth_token():
 
 
 if __name__ == '__main__':
-    import os
-    os.environ['DEBUG'] = 'true'
-    os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = 'false'
-    app.run(host='localhost', port=8000)
+    app.run(debug=True, port=8000)
