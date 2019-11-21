@@ -16,5 +16,5 @@ setup(
     include_package_data=True,
     platforms='any',
     test_suite='nose.collector',
-    install_requires=['Flask==0.10.1', 'Flask-OAuthlib>=0.5.0', 'PyYAML==3.11', 'nose==1.3.7', 'gcloud==0.18.1']
+    install_requires=['Flask>=1.0.0','Flask-OAuthlib>=0.9.5', 'PyYAML==4.2b1', 'nose==1.3.7','gcloud==0.18.3','PyJWT==1.7.1']
 )
