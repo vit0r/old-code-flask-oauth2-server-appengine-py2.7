@@ -7,8 +7,10 @@ CLIENT_ID = environ.get('CLIENT_ID_OAUTH')
 CLIENT_SECRET = environ.get('CLIENT_SECRET_OAUTH')
 OAUTH_SERVER_BASE_URL = environ.get('OAUTH_SERVER_BASE_URL')
 
+environ['DEBUG'] = 'true'
+environ['OAUTHLIB_INSECURE_TRANSPORT'] = 'false'
+
 app = Flask(__name__)
-app.debug = True
 app.secret_key = 'secret'
 oauth = OAuth(app)
 
@@ -17,10 +19,10 @@ remote = oauth.remote_app(
     consumer_key=CLIENT_ID,
     consumer_secret=CLIENT_SECRET,
     request_token_params={'scope': 'email'},
-    base_url=f'{OAUTH_SERVER_BASE_URL}/api/',
+    base_url='{}/api/'.format(OAUTH_SERVER_BASE_URL),
     request_token_url=None,
-    access_token_url=f'{OAUTH_SERVER_BASE_URL}/oauth/token',
-    authorize_url=f'{OAUTH_SERVER_BASE_URL}/oauth/authorize'
+    access_token_url='{}/oauth/token'.format(OAUTH_SERVER_BASE_URL),
+    authorize_url='{}/oauth/authorize'.format(OAUTH_SERVER_BASE_URL)
 )
 
 
@@ -54,7 +56,4 @@ def get_oauth_token():
 
 
 if __name__ == '__main__':
-    import os
-    os.environ['DEBUG'] = 'true'
-    os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = 'false'
-    app.run(host='localhost', port=8000)
+    app.run(debug=True, port=8000)
