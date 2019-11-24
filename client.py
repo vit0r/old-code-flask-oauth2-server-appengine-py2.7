@@ -19,10 +19,10 @@ remote = oauth.remote_app(
     consumer_key=CLIENT_ID,
     consumer_secret=CLIENT_SECRET,
     request_token_params={'scope': 'email'},
-    base_url=f'{OAUTH_SERVER_BASE_URL}/api/',
+    base_url='{}/api/'.format(OAUTH_SERVER_BASE_URL),
     request_token_url=None,
-    access_token_url=f'{OAUTH_SERVER_BASE_URL}/oauth/token',
-    authorize_url=f'{OAUTH_SERVER_BASE_URL}/oauth/authorize'
+    access_token_url='{}/oauth/token'.format(OAUTH_SERVER_BASE_URL),
+    authorize_url='{}/oauth/authorize'.format(OAUTH_SERVER_BASE_URL)
 )
 
 
